@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d27dgcu04fic4"]
+
+[ext_resource type="Script" uid="uid://ktjwv6hxlsek" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://dyv2hemm86n3x" path="res://bullet.tscn" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cfx1r5p4s8jye" path="res://assets/player_ship.png" id="2_i3pqv"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 56.0255
+
+[node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_i3pqv")
+gravity_scale = 0.0
+can_sleep = false
+script = ExtResource("1_onrkg")
+bullet_scene = ExtResource("2_hqtel")
+
+[node name="Sprite2d" type="Sprite2D" parent="."]
+position = Vector2(42, 38)
+rotation = 1.5708
+scale = Vector2(0.524194, 0.474074)
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="."]
+position = Vector2(37, 38)
+scale = Vector2(0.474074, 0.524194)
+shape = SubResource("CircleShape2D_onrkg")
+
+[node name="Muzzle" type="Marker2D" parent="."]
+
+[node name="GunCooldown" type="Timer" parent="."]
+
+[node name="Exhaust" type="GPUParticles2D" parent="."]
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
